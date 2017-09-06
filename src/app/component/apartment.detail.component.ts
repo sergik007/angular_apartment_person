@@ -7,7 +7,15 @@ import {Location} from "@angular/common";
 @Component({
     selector:"apartment-details",
     template:`        
-        <h2>{{apartment.name}}</h2>
+        <h2>{{apartment.id}}</h2>
+        <input [(ngModel)]="apartment.name" placeholder="name"/><br/>
+        <input [(ngModel)]="apartment.dateFrom" placeholder="dd-MM-yyyy" pattern=""/>
+        <input [(ngModel)]="apartment.dateTo" placeholder="dd-MM-yyyy" pattern=""/>
+        <div>
+            <span>{{apartment.person.id}}</span>{{apartment.person.fullname}}
+            <button (click)="">Show person</button>
+        </div>
+        <button (click)="goBack()">Back</button>
     `
 })
 export class ApartmentDetailComponent{
