@@ -8,12 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var apartment_component_1 = require("../component/apartment.component");
-var person_component_1 = require("../component/person.component");
+var apartments_component_1 = require("../component/apartments.component");
+var persons_component_1 = require("../component/persons.component");
+var apartment_detail_component_1 = require("../component/apartment.detail.component");
+var person_detail_component_1 = require("../component/person.detail.component");
 var routes = [
     { path: "", redirectTo: "/apartment", pathMatch: 'full' },
-    { path: "person", component: person_component_1.PersonComponent },
-    { path: "apartment", component: apartment_component_1.ApartmentComponent },
+    { path: "person", component: persons_component_1.PersonsComponent },
+    { path: "apartment", component: apartments_component_1.ApartmentsComponent },
+    { path: "apartment/:id", component: apartment_detail_component_1.ApartmentDetailComponent, pathMatch: 'full' },
+    { path: 'person/:id', component: person_detail_component_1.PersonDetailComponent, pathMatch: "full" }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

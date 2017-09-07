@@ -11,8 +11,16 @@ var mock_apartment_1 = require("../model/mock-apartment");
 var ApartmentService = (function () {
     function ApartmentService() {
     }
-    ApartmentService.prototype.getApartents = function () {
+    ApartmentService.prototype.getApartments = function () {
+        // var promice = new Promise((resolve, reject) => {
+        //     resolve(APARTMENTS);
+        //     reject("bad error");
+        // });
         return Promise.resolve(mock_apartment_1.APARTMENTS);
+        // return promice;
+    };
+    ApartmentService.prototype.getApartment = function (id) {
+        return this.getApartments().then(function (apartments) { return apartments.find(function (apartment) { return apartment.id === id; }); });
     };
     return ApartmentService;
 }());

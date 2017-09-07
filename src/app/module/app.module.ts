@@ -4,9 +4,11 @@ import {FormsModule} from "@angular/forms";
 import {AppComponent} from "../component/app.component";
 import {ApartmentService} from "../service/apartment.service";
 import {PersonService} from "../service/person.service";
-import {ApartmentComponent} from "../component/apartment.component";
-import {PersonComponent} from "../component/person.component";
+import {ApartmentsComponent} from "../component/apartments.component";
+import {PersonsComponent} from "../component/persons.component";
 import {AppRoutingModule} from "./app-routing.module";
+import {ApartmentDetailComponent} from "../component/apartment.detail.component";
+import {PersonDetailComponent} from "../component/person.detail.component";
 
 @NgModule({
     imports:[
@@ -18,8 +20,10 @@ import {AppRoutingModule} from "./app-routing.module";
 
     ],
     declarations:[
-        ApartmentComponent,
-        PersonComponent,
+        ApartmentDetailComponent,
+        ApartmentsComponent,
+        PersonsComponent,
+        PersonDetailComponent,
         AppComponent
     ],
     bootstrap:[

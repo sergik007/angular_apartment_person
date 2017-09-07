@@ -11,24 +11,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var person_service_1 = require("../service/person.service");
-var PersonComponent = (function () {
-    function PersonComponent(personService) {
+var router_1 = require("@angular/router");
+var PersonsComponent = (function () {
+    function PersonsComponent(personService, router) {
         this.personService = personService;
+        this.router = router;
         this.title = "Persons";
     }
-    PersonComponent.prototype.ngOnInit = function () {
+    PersonsComponent.prototype.ngOnInit = function () {
         var _this = this;
         //person мы получае в результате успеха
         this.personService.getPersons().then(function (persons) { return _this.persons = persons; });
     };
-    return PersonComponent;
+    PersonsComponent.prototype.onSelect = function (person) {
+        this.selectedPerson = person;
+    };
+    PersonsComponent.prototype.goToDetails = function () {
+        this.router.navigate(["/person", this.selectedPerson.id]);
+    };
+    return PersonsComponent;
 }());
-PersonComponent = __decorate([
+PersonsComponent = __decorate([
     core_1.Component({
         selector: "my-person",
-        template: "        \n        <h2>{{title}}</h2>\n        <ul>\n            <li *ngFor=\"let person of persons\">\n                <span class=\"badge\">{{person.id}}</span>{{person.fullname}}\n            </li>\n        </ul>\n    "
+        template: "\n        <h2>{{title}}</h2>\n        <ul>\n            <li *ngFor=\"let person of persons\"\n                (click)=\"onSelect(person)\"\n            >\n                <span class=\"badge\">{{person.id}}</span>{{person.surname}}\n            </li>\n        </ul>\n        <div *ngIf=\"selectedPerson\">\n            <div>{{selectedPerson.id}}</div>{{selectedPerson.surname}}\n            <button (click)=\"goToDetails()\">Details</button>\n        </div>\n    "
     }),
-    __metadata("design:paramtypes", [person_service_1.PersonService])
-], PersonComponent);
-exports.PersonComponent = PersonComponent;
-//# sourceMappingURL=person.component.js.map
+    __metadata("design:paramtypes", [person_service_1.PersonService,
+        router_1.Router])
+], PersonsComponent);
+exports.PersonsComponent = PersonsComponent;
+//# sourceMappingURL=persons.component.js.map

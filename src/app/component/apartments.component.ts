@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
+import {Router} from "@angular/router";
 import {ApartmentService} from "../service/apartment.service";
 import {Apartment} from "../model/apartment";
 import {Location} from "@angular/common";
@@ -11,22 +11,26 @@ import {Location} from "@angular/common";
         <ul>
             <li *ngFor="let apartment of apartments"
                 (click)="onSelect(apartment)"
-                
             >
                 <span>{{apartment.id}}</span>{{apartment.name}}
             </li>
         </ul>
+        <div *ngIf="selectedApartment">
+            <div>
+                <span>{{selectedApartment.id}}</span>{{selectedApartment.name}}
+                <button (click)="goToDetails()">Show details</button>
+            </div>
+        </div>
     `
 
 })
-export class ApartmentComponent implements OnInit {
+export class ApartmentsComponent implements OnInit {
     title: string = 'Apartments';
     apartments: Apartment[];
     selectedApartment: Apartment;
 
     constructor(private apartmentService: ApartmentService,
-                private activatedRoute: ActivatedRoute,
-                private location: Location) {
+                private router: Router) {
     }
 
     ngOnInit(): void {
@@ -34,10 +38,14 @@ export class ApartmentComponent implements OnInit {
     }
 
     getApartments(): void {
-        this.apartmentService.getApartents().then(apartments => this.apartments = apartments);
+        this.apartmentService.getApartments().then(apartments => this.apartments = apartments);
     }
 
     onSelect(apartment: Apartment): void {
         this.selectedApartment = apartment;
+    }
+
+    goToDetails(): void {
+        this.router.navigate(['/apartment', this.selectedApartment.id])
     }
 }

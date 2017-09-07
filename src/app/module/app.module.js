@@ -12,9 +12,11 @@ var forms_1 = require("@angular/forms");
 var app_component_1 = require("../component/app.component");
 var apartment_service_1 = require("../service/apartment.service");
 var person_service_1 = require("../service/person.service");
-var apartment_component_1 = require("../component/apartment.component");
-var person_component_1 = require("../component/person.component");
+var apartments_component_1 = require("../component/apartments.component");
+var persons_component_1 = require("../component/persons.component");
 var app_routing_module_1 = require("./app-routing.module");
+var apartment_detail_component_1 = require("../component/apartment.detail.component");
+var person_detail_component_1 = require("../component/person.detail.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -29,8 +31,10 @@ AppModule = __decorate([
         ],
         exports: [],
         declarations: [
-            apartment_component_1.ApartmentComponent,
-            person_component_1.PersonComponent,
+            apartment_detail_component_1.ApartmentDetailComponent,
+            apartments_component_1.ApartmentsComponent,
+            persons_component_1.PersonsComponent,
+            person_detail_component_1.PersonDetailComponent,
             app_component_1.AppComponent
         ],
         bootstrap: [
